@@ -1,5 +1,7 @@
 # AI, Machine Learning, Deep Learning, NLP, Transformers & Large Language Models
 
+Parameter are the neurons of the computers
+
 A beginner-friendly guide covering the evolution of Artificial Intelligence from rule-based systems to modern Large Language Models (LLMs).
 
 ---
