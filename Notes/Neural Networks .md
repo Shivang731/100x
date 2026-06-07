@@ -1,20 +1,18 @@
-# Neural Networks & Activation Functions
+# Neural Networks & Activation Functions Notes
 
 ## Machine Learning Intuition
 
-```text
 Rules
- ↓
+↓
 Model
- ↓
+↓
 Guess
- ↓
+↓
 Measure
- ↓
+↓
 Adjust
- ↓
+↓
 Repeat
-```
 
 Machine Learning in one sentence:
 
@@ -51,17 +49,17 @@ Repeat
 A neuron receives inputs and produces an output.
 
 ```text
-x₁ --w₁--> \
-x₂ --w₂-->  Σ --> Activation --> Output
-x₃ --w₃--> /
+x1 --w1--> \
+x2 --w2-->  Σ --> Activation --> Output
+x3 --w3--> /
 ```
 
 Where:
 
-* `x₁, x₂, x₃` = Inputs
-* `w₁, w₂, w₃` = Weights
-* `b` = Bias
-* Activation = Non-linearity
+- x₁, x₂, x₃ = Inputs
+- w₁, w₂, w₃ = Weights
+- b = Bias
+- Activation = Non-linearity
 
 ---
 
@@ -69,9 +67,9 @@ Where:
 
 Weights tell the model:
 
-* This feature is important.
-* This feature is not important.
-* This feature matters more than another.
+- This feature is important.
+- This feature is not important.
+- This feature matters more than another.
 
 Example:
 
@@ -85,15 +83,15 @@ Income     → Weight = High
 
 # Neuron Equation
 
-[
-Output = Activation\left(\sum_i w_i x_i + b\right)
-]
+```math
+Output = Activation(Σ(wᵢxᵢ) + b)
+```
 
-Simplified:
+or
 
-[
-Output = Activation(wx+b)
-]
+```math
+Output = Activation(wx + b)
+```
 
 ---
 
@@ -133,13 +131,12 @@ Loss tells us:
 
 Examples:
 
-* Mean Squared Error (MSE)
-* Cross Entropy
+- MSE
+- Cross Entropy
 
-```text
 Higher Loss = Worse Prediction
-Lower Loss  = Better Prediction
-```
+
+Lower Loss = Better Prediction
 
 ---
 
@@ -177,53 +174,55 @@ Linear Layer
 Output
 ```
 
-Every layer remains linear.
+Every layer is linear.
 
 ---
 
-# The Linearity Problem
+# Linearity Problem
 
 Suppose:
 
-[
-y = w_1x + b_1
-]
+```math
+y = w₁x + b₁
+```
 
 and
 
-[
-z = w_2y + b_2
-]
+```math
+z = w₂y + b₂
+```
 
-Substitute (y):
+Substitute y:
 
-[
-z = w_2(w_1x+b_1)+b_2
-]
+```math
+z = w₂(w₁x+b₁)+b₂
+```
 
 Expanding:
 
-[
-z = (w_2w_1)x + (w_2b_1+b_2)
-]
+```math
+z = (w₂w₁)x + (w₂b₁+b₂)
+```
 
 Let:
 
-[
-w' = w_2w_1
-]
+```math
+w' = w₂w₁
+```
 
-[
-b' = w_2b_1+b_2
-]
+and
+
+```math
+b' = w₂b₁+b₂
+```
 
 Then:
 
-[
+```math
 z = w'x+b'
-]
+```
 
-Still just a single line.
+Still just one line.
 
 ---
 
@@ -231,26 +230,26 @@ Still just a single line.
 
 Even if we stack:
 
-* 10 layers
-* 100 layers
-* 1,000 layers
-* 1,000,000 layers
+- 10 layers
+- 100 layers
+- 1,000 layers
+- 1,000,000 layers
 
-The network still collapses into:
+the entire network collapses into:
 
-[
+```math
 y = wx+b
-]
+```
 
 A single linear transformation.
 
-Deep networks gain no additional power without non-linearity.
+So the deep network gains no additional power.
 
 ---
 
 # Why Non-Linearity Matters
 
-Imagine red and blue points:
+Imagine red and blue points.
 
 ```text
 🔴 🔵 🔴
@@ -266,15 +265,15 @@ We need curved boundaries.
 
 # Activation Functions
 
-Activation functions introduce bends into the model.
+Activation functions add bends.
 
-Without activation:
+Instead of:
 
 ```text
 -----------
 ```
 
-With activation:
+We get:
 
 ```text
 ~~~~~~~
@@ -332,15 +331,15 @@ Can solve complex problems
 
 # Historical Context
 
-Neural networks existed as early as the 1970s.
+Neural networks existed in the 1970s.
 
 However:
 
-* Good activation functions were uncommon.
-* Training techniques were weak.
-* Computing power was limited.
+- Good activation functions were not common.
+- Training techniques were weak.
+- Computing power was limited.
 
-As a result, deep learning did not become practical until much later.
+As a result deep learning did not take off.
 
 Modern activations and GPUs changed everything.
 
@@ -367,21 +366,21 @@ Maps values between:
 
 Formula:
 
-[
-\sigma(x)=\frac{1}{1+e^{-x}}
-]
+```math
+σ(x) = 1 / (1 + e^(-x))
+```
 
 Examples:
 
 ```text
-Input = -9999 → ≈0
+Input = -9999 → 0
 Input = 0     → 0.5
-Input = 9999  → ≈1
+Input = 9999  → 1
 ```
 
-### Interpretation
+Interpretation:
 
-Acts like a probability output.
+Acts like a probability.
 
 ---
 
@@ -395,9 +394,9 @@ Maps values between:
 
 Formula:
 
-[
-\tanh(x)
-]
+```math
+tanh(x)
+```
 
 Examples:
 
@@ -407,7 +406,7 @@ Very Negative → -1
 Very Positive → 1
 ```
 
-### Advantage
+Advantage:
 
 Centered around zero.
 
@@ -415,13 +414,13 @@ Centered around zero.
 
 # ReLU
 
-**Rectified Linear Unit**
+Rectified Linear Unit
 
 Formula:
 
-[
-f(x)=\max(0,x)
-]
+```math
+f(x)=max(0,x)
+```
 
 Graph:
 
@@ -442,12 +441,12 @@ x ≥ 0 → x
 Examples:
 
 | Input | Output |
-| ----- | ------ |
-| -100  | 0      |
-| -2    | 0      |
-| 0     | 0      |
-| 2     | 2      |
-| 10000 | 10000  |
+|---------|---------|
+| -100 | 0 |
+| -2 | 0 |
+| 0 | 0 |
+| 2 | 2 |
+| 10000 | 10000 |
 
 ---
 
@@ -463,46 +462,46 @@ Positive values remain untouched.
 
 Benefits:
 
-* Faster training
-* Better gradients
-* Less vanishing gradient problem
+- Faster training
+- Better gradients
+- Less vanishing gradient problem
 
 ---
 
-# GELU
+# Modern Variants
 
-**Gaussian Error Linear Unit**
+## GELU
+
+Gaussian Error Linear Unit
 
 Purpose:
 
-* Smoother than ReLU
-* Preserves useful information
-* Better performance in deep models
+- Makes the curve smoother than ReLU.
+- Preserves useful information.
+- Better performance in deep models.
 
 Used in:
 
-* BERT
-* GPT
-* Transformers
-* Modern LLMs
+- BERT
+- GPT
+- Transformers
+- Modern LLMs
 
 ---
 
-# Swish
+## Swish
 
-Another smooth activation function.
+Another smooth activation.
 
-Benefits:
+Provides smoother gradient flow than ReLU.
 
-* Smooth gradients
-* Better information flow
-* Sometimes outperforms ReLU
+Used in some modern architectures.
 
 ---
 
 # Final Intuition
 
-A neural network works like:
+Neural Network:
 
 ```text
 Input
@@ -528,4 +527,4 @@ Together they allow neural networks to model extremely complex real-world relati
 
 # One-Line Summary
 
-> A neural network is a collection of weighted neurons, and activation functions introduce non-linearity so that the network can learn complex patterns instead of collapsing into a single straight-line equation.
+A neural network is a collection of weighted neurons, and activation functions introduce non-linearity so that the network can learn complex patterns instead of collapsing into a single straight-line equation.
