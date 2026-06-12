@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <div style=""display: flex ;justify-content: space-between; padding : 0px 100px">
+            <div>
+                Loading....
+            </div>
+            <div>
+                <input type="text"/>
+                <button> Create new note</button>
+            </div>
+         </div>
+
+         <script> 
+             function getTodos() {
+                //fetch,axios
+                const response = await fetch("https:localhost:3000/notes")
+                const json = await response.json()
+                console.log(json.notes);
+             }
+         </script>
+    </body>
+</html>
