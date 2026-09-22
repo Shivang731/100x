@@ -1,13 +1,12 @@
 const express = require('express');
-
+const jwt = require("jsonwebtoken")
+const JWT_SECRET = "secret123"
 const app = express();
 app.use(express.json());
 
 const users = [];
 
-function generateToken() {
-    return Math.random();
-}
+\\
 
 app.post("/signup", function(req, res) {
     const username = req.body.username;
