@@ -20,16 +20,12 @@ function auth(req,res,next){
             message : "You are not logged in"
         })
     }
-
-    
-
-
 }
 
 function logger(req,res,next){
         console.log(req.method + "is request type");   //just checks if its a get or post request
         next();
-    }
+}
 
 app.post("/signup",logger,function(req,res){
     const username = req.body.username;
